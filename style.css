@@ -18,7 +18,7 @@ header{
     height: 90px;
     color: #ffffff;
     display: grid;
-    grid-template-columns:64% repeat(4,100px);
+    grid-template-columns:30vw repeat(4,100px);
     grid-template-rows: 90px;
     justify-content:end ;
     align-items: center;
