@@ -101,7 +101,7 @@ header .title{
     grid-template-columns:200px ;
     place-content: center;
     row-gap: 20px;
-    Padding: 0 25px 25px 70px;
+    Padding: 0 25px 50px 25px;
 }
 .galery img{
     width: 100%;
