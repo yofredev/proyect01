@@ -18,15 +18,16 @@ header{
     height: 90px;
     color: #ffffff;
     display: grid;
-    grid-template-columns:30vw repeat(4,100px);
+    grid-template-columns:minmax(400px,900px) repeat(4,100px);
     grid-template-rows: 90px;
-    justify-content:end ;
+    justify-content:start ;
     align-items: center;
-    padding: 0 30px 0 0;
+    padding: 0 25px 0 0;
     font-size: 12px;
     position:fixed;
     z-index: 6;
-    gap: 25px;
+    gap:25px;
+
 }
 .galery{
     grid-row: 3/4;
@@ -133,6 +134,8 @@ article{
     font-weight: bold;
     color: #ffffff;
     text-decoration:none;
+    grid-area:"title";
+    padding: 0 0 0 30px;
 
 }
 .nav-bar{
@@ -156,6 +159,41 @@ article{
 #nav-bar01{
     background: #ffffff;
     color: #222222;
+}
+.burger{
+    display: none;
+}
+@media (max-width){
+
+}
+@media (max-width:930px) {
+    header{
+        grid-template-columns:minmax(330px) minmax(50px,550px);
+        padding: 0;
+    }
+    header .nav-bar{
+        display: none;
+    }
+    .header-title{
+        font-size: 25px;
+    }
+    .burger{
+        display: block;
+        background:#121212;
+        width:40px;
+        height: 40px;
+        justify-self: end;
+        
+    }
+    .burger div{
+        background: #ffffff;
+        width:full;
+        height: 8px;
+        margin-bottom: 5px;
+        border-radius: 20px;
+
+    }
+    
 }
 
 
