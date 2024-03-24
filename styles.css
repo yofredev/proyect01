@@ -6,46 +6,78 @@
     font-family: "loto", Helvetica, sans-serif;
 }
 main{
-    background:linear-gradient(to top, rgb(55, 65, 81), #111827, rgb(0, 0, 0));
+    background: #c9cbcb;
 }
 
 header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100vw;
+    width: 100%;
     height: 90px;
-    background:#000;
+    background:#151515;
     color:#ECF0F1;
     padding: 0 15px 0 25px;
     position: fixed;
     z-index: 5;
     
 }
+header input{
+    display:none;
+}
 header .burger{
-    width: 35px;
-    height: 25px;
-    align-self:center ;
+    width: 30px;
+    height: 30px;
+    align-self:center;
+}
+#burger:checked ~ label .burger div:first-child{
+    transform: rotate(45deg);
+}
+#burger:checked ~ label .burger div:nth-child(2){
+    opacity:0;
+}
+#burger:checked ~ label .burger div:last-child{
+    transform: rotate(-45deg);
+}
+#burger:checked~nav{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    position:absolute;
+    top: 90px;
+    right: 0;
+    text-align: center;
+    background-color: #151515;
+    width: 100vw;
+    overflow: hidden;
+    height: 160px;
+    animation-name: move;
+    animation-duration: 200ms;
 }
 .burger div{
     display: block;
     width: 100%;
     height: 5px;
+    transform-origin: left;
     background-color: #ECF0F1;
-    margin: 0 0 5px 0;
+    margin: 0 0 5.3px 0;
     border-radius: 20px;
+    transition: all .6s;
 
 }
 header nav{
     display: none;
-   
+    animation-name: move;
+    animation-direction: alternate;
 }
 header nav a{
+    width: 100px;
     font-size: 17px;
     font-weight: bold;
     border-radius: 20px;
     padding:10px;
-    transition: 500ms;
+    margin: 0 0 10px 0;
+    transition: background 500ms;
     text-decoration: none;
 }
 header nav a:hover{
@@ -58,18 +90,17 @@ header .title{
 }
 .big-img{
     display: flex;
-    width: 100vw;
+    width: 100%;
     height: 60vh;
     justify-content: center;
     align-items: end;
-
 }
 .big-img .gradient{
     display: flex;
     justify-content: end;
     align-items: center;
     flex-direction: column;
-    width: 100vw;
+    width: 100%;
     height: 50vh;
     z-index: 2;
     transition: 1s;
@@ -84,43 +115,40 @@ header .title{
 }
 .big-img h1{
     text-align: center;
-    margin-bottom: 25px;
     position: absolute;
     color: #ECF0F1;
     z-index: 3;
+    margin-bottom: 25px;
 }
 .big-img img{
-    width: 100vw;
-    height: 50vh;
+    width: 100%;
+    height: 100%;
     z-index: 1;
-    position: relative;
+    object-fit: cover;  
+    object-position: 60% 30px;
 }
 .galery{
     display: grid;
     grid-template-columns:200px ;
     place-content: center;
     row-gap: 20px;
+    padding: 0 0 20px 0 ;
 }
 .galery img{
     width: 100%;
     border-radius: 15px;
-    box-shadow: 5px 5px 30px black;
-    transition: scale 500ms ease-out;
-}
-.galery img:hover{
-    scale:1.2;
-    z-index: 5;
+    box-shadow: 2px 2px 20px black;
 }
 .galery-title{
     margin:20px 0 20px 0;
     text-align: center;
-    color: #ECF0F1;
+    color: #151515;
 }
 footer{
     display: flex;
     width: 100%;
     height:65vh;
-    background: #111827;
+    background: #151515;
     list-style-type: none;
     color: #ECF0F1;
     padding: 30px 40px 40px;
@@ -155,11 +183,48 @@ footer a {
     color: #979A9A;
     margin:  0 0 10px 0;
 }
+@keyframes move {
+    0%{
+        height:0;
+    }
+    20%{
+        height:32px;
+      }
+    40%{
+        height:64px;
+      }
+    60%{
+        height:96px;
+    }
+    80%{
+        height:128px;
+      }
+    100%{
+        height:160px;
+    }
+    
+}
 @media (min-width:700px){
     header nav {
         display: flex;
         gap: 30px;
         padding-right: 25px;
+        text-align: center;
+    }
+    #burger:checked~nav{ 
+    display: flex;
+    flex-direction: initial;
+    overflow:  initial;
+    position: initial;
+    height: initial;
+    background: initial;
+    width: initial;
+    gap: 30px;
+    padding: 0 25px 0 0;
+    width: initial;
+    font-size: 17px;
+    font-weight: bold;
+    text-decoration: none;
     }
     .burger{
         display: none;
@@ -169,7 +234,7 @@ footer a {
         height: 110vh;
     }
     .big-img img{
-        height: 100vh;
+        height: 100%;
     }
     .big-img .gradient{
         width: 100%;
@@ -178,7 +243,7 @@ footer a {
     }
     .big-img h1{
         font-size: 50px;
-        margin: 0 0 100px;
+        margin: 0 0 60px;
     }
     .galery-title{
         font-size: 60px;
@@ -191,7 +256,13 @@ footer a {
     
     }
     .galery img:hover{
-        scale: 1.2;
+        transform:0;
         z-index: 5;
 }
+}
+@media (min-width:1057px){
+    .big-img img{
+        object-position: center;
+    }
+
 }
